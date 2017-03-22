@@ -9,20 +9,13 @@ type school = string list M.t
 let create () = M.empty 
 
 (** Add a student to a school *)
-let add name g school = 
-  let names = match M.find school g with
-  | None -> [name]
-  | Some n -> name :: n in
-  M.add school ~key:g ~data:names
+let add name g school = M.add_multi school ~key:g ~data:name
 
 (** Get all the students from a grade *)
-let grade g school = 
-  match M.find school g with
-  |None -> []
-  |Some names -> names
+let grade g school = Option.value ~default:[] (M.find school g) 
 
 (** Sort the list of students in a grade, if necessary *)
-let sort school = M.map school ~f:(fun n -> List.sort n ~cmp:(fun l r -> String.compare l r))
+let sort school = M.map school ~f:(List.sort ~cmp:String.compare)
 
 (** Return the list of grades and students as a map *)
 let to_map school = school
