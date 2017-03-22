@@ -7,12 +7,8 @@ let response_for message =
     && List.fold (String.to_list_rev s) 
       ~init:false 
       ~f:(fun a c -> a || Char.is_alpha c) in
-  let message' = String.strip message in
-  if message' = "" then
-    "Fine. Be that way!"
-  else if is_shouting message' then
-    "Whoa, chill out!"
-  else if is_question message' then
-    "Sure."
-  else
-    "Whatever."
+  match String.strip message with
+  | "" -> "Fine. Be that way!"
+  | m when is_shouting m -> "Whoa, chill out!"
+  | m when is_question m ->  "Sure."
+  | _ -> "Whatever."
