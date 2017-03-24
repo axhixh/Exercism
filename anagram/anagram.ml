@@ -3,9 +3,9 @@ open Core.Std
 module M = Char.Map
 
 let to_map word = 
-  let inc m c = M.change m c ~f:(function  
-      | None -> Some 1
-      | Some x -> Some (x + 1)) in
+  let inc m c = M.update m c ~f:(function  
+      | None -> 1
+      | Some x -> x + 1) in
   String.fold word ~init:M.empty ~f:inc
 
 let anagrams base candidates = 
