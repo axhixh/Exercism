@@ -5,10 +5,9 @@ let count dna n = String.count dna ~f:(fun c -> c = n)
 
 (* Count the nucleotides in the string. *)
 let nucleotide_counts dna =
-  let inc m c = Char.Map.change m c ~f:(fun v ->
-      match v with
-      | None -> Some 1
-      | Some v -> Some (v + 1)) in
+  let inc m c = Char.Map.update m c ~f:(function
+      | None ->  1
+      | Some v -> v + 1) in
   String.fold dna ~init:Char.Map.empty ~f:inc
 
 (* iterates the string 4 times
