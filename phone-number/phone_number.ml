@@ -10,16 +10,14 @@ let to_list s =
   in
   aux [] (String.to_list_rev s)
 
-let adjust_for_1 = function
-  | Some (h::tl) when h = '1' && List.length tl = 10 -> Some tl
-  | x -> x
-
-let check_length = function 
+let check = function
   | Some x when List.length x = 10 -> Some x
+  | Some (h::tl) when h = '1' && List.length tl = 10 -> Some tl
   | _ -> None 
 
+let to_string s = Option.value_map s ~default:None
+    ~f:(fun x -> Some (String.of_char_list x)) 
+
 let number s = to_list s 
-               |> adjust_for_1 
-               |> check_length  
-               |> Option.value_map ~default:None 
-                 ~f:(fun x -> Some (String.of_char_list x))
+               |> check
+               |> to_string 
