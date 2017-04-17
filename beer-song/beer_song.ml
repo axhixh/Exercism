@@ -8,10 +8,7 @@ let verse = function
          (string_of_int x) ^ " bottles of beer.\nTake one down and pass it around, " ^
          (string_of_int (x - 1)) ^ " bottles of beer on the wall.\n" 
 
-let lyrics ~from:f ~until:u =
-  let rec aux acc = function
-    | c when c < u -> acc
-    | c -> let acc = if acc = "" then verse c else acc ^ "\n" ^ verse c in
-      aux acc (c - 1) in
-  aux "" f
-
+let lyrics ~from ~until =
+  List.range ~stride:(-1) ?stop:(Some `inclusive) from until 
+  |> List.map ~f:verse 
+  |> String.concat ~sep:"\n"
