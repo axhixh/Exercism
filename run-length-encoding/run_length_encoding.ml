@@ -4,11 +4,11 @@ let encode s =
   let to_string c = function 
     | 1 -> String.of_char c
     | n -> Int.to_string n ^ String.of_char c in
-  String.rev s
-  |> String.to_list_rev
+  s
+  |> String.to_list
   |> List.group ~break:(<>)
-  |> List.fold ~init:"" 
-    ~f:(fun acc e -> acc ^ to_string (List.hd_exn e) (List.length e))
+  |> List.map ~f:(fun e -> to_string (List.hd_exn e) (List.length e))
+  |> String.concat
 
 let decode s = 
   String.fold s ~init:("", None)
