@@ -24,8 +24,8 @@ let name robot =
 
 (* when robot name is reset; it is available for other robots to use *)
 let reset robot = 
-    let n = Array.length robot_db - 1 in
-    let old_name = !(robot_db.(robot))
-    and new_name = !(robot_db.(n)) in
-    robot_db.(robot) := new_name;
-    robot_db.(n) := old_name
+  let n = Array.length robot_db - 1 in
+  let old_name = !(robot_db.(robot))
+  and new_name = !(robot_db.(n)) in
+  robot_db.(robot) := new_name;
+  robot_db.(n) := old_name
