@@ -1,6 +1,4 @@
 open Core.Std
-let cmp = (<>)
-
 open Int64
 
 let split n = 
@@ -41,10 +39,10 @@ let hundreds = function
 
 let in_english = function
   | 0L -> Some "zero"
-  | n when n > 999999999999L || n < 0L -> None
+  | n when n > 999_999_999_999L || n < 0L -> None
   | n -> split n 
          |> zip_scale 
          |> List.map ~f:(fun (x,s) -> if x = 0L then "" else (hundreds x ^ s)) 
-         |> List.filter ~f:(cmp "")
+         |> List.filter ~f:(String.(<>) "")
          |> String.concat ~sep:" "
          |> Some 
