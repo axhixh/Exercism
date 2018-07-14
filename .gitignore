@@ -1,2 +1,4 @@
 */_build
 test.native
+fsharp/*/bin
+fsharp/*/obj
