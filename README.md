@@ -1,6 +1,7 @@
-# OCaml exercises for Exercism
+# Exercises from Exercism
 
-My solutions for OCaml exercises in Exercism.
+My solutions for exercises in Exercism.
 
-Visit http://exercism.io/languages/ocaml/about if you
-want to do the exercises.
+Each folder contains exercises for the given language.
+
+Visit http://exercism.io if you want to do the exercises.
