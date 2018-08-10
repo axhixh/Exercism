@@ -16,6 +16,7 @@ let plants (diagram:string) student =
                   | 'C' -> Plant.Clover
                   | 'G' -> Plant.Grass
                   | 'V' -> Plant.Violets
+                  | _   -> failwith "Invalid plant type"
   diagram.Split '\n'
   |> Array.map (fun r -> r.ToCharArray () |> Seq.chunkBySize 2 |> Array.ofSeq)
   |> (fun r -> Array.fold2 (fun a p1 p2 -> a @ [Array.append p1 p2]) [] r.[0] r.[1])
