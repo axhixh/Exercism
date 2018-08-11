@@ -2,3 +2,4 @@
 test.native
 fsharp/*/bin
 fsharp/*/obj
+.solution.json
