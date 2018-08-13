@@ -2,7 +2,7 @@ module Clock
 
 let create hours minutes =
     let minutesInDay = 24 * 60
-    let minutesPastMidnight = ((hours * 60 + minutes) % minutesInDay + minutesInDay) % minutesInDay
+    let minutesPastMidnight = ((hours * 60 + minutes) % minutesInDay + minutesInDay)
     ((minutesPastMidnight / 60) % 24, minutesPastMidnight % 60)
 
 let add minutes clock =
